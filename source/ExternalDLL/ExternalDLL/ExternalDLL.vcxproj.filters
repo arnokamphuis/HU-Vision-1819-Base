@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\private">
+      <UniqueIdentifier>{090c830e-02e3-4b5d-a3b3-ca2643edd398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\private">
+      <UniqueIdentifier>{e5e5b9ec-fce6-4063-a495-4f20d137e096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\private\disableautocomplete">
+      <UniqueIdentifier>{f8806cde-6c2b-4ac4-8d14-aac132c21615}</UniqueIdentifier>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files\private\disableautocomplete">
+      <UniqueIdentifier>{9beb7940-6838-4432-ac5a-cb7c572082a1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntensityImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Feature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FeatureMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentPreProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentLocalization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentExtraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultExtraction.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultLocalization.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultPreProcessing.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="Representation.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessing.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="DLLExecution.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="export.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="Extraction.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="GrayscaleAlgorithm.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="HereBeDragons.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="Localization.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="PreProcessing.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBImageStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntensityImageStudent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBImagePrivate.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="IntensityImagePrivate.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="SonnetXVIII.h">
+      <Filter>Header Files\private\disableautocomplete</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntensityImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Feature.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FeatureMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentPreProcessing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentLocalization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentExtraction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultExtraction.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultLocalization.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultPreProcessing.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessing.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Representation.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="DLLExecution.cpp">
+      <Filter>Source Files\private\disableautocomplete</Filter>
+    </ClCompile>
+    <ClCompile Include="export.cpp">
+      <Filter>Source Files\private\disableautocomplete</Filter>
+    </ClCompile>
+    <ClCompile Include="GrayscaleAlgorithm.cpp">
+      <Filter>Source Files\private\disableautocomplete</Filter>
+    </ClCompile>
+    <ClCompile Include="HereBeDragons.cpp">
+      <Filter>Source Files\private\disableautocomplete</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBImageStudent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntensityImageStudent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBImagePrivate.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="IntensityImagePrivate.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SonnetXVIII.cpp">
+      <Filter>Source Files\private\disableautocomplete</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
