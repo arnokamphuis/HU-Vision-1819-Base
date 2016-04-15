@@ -17,13 +17,13 @@ RGBImage * ImageFactory::ImplementationStudent::newRGBImage(const int width, con
 	return new RGBImageStudent(width, height);
 }
 IntensityImage * ImageFactory::ImplementationStudent::newIntensityImage(const int width, const int height) const {
-	return new IntensityImageStudent(width, height);
+	return new IntensityImagePrivate(width, height);
 }
 RGBImage * ImageFactory::ImplementationStudent::newRGBImage() const {
 	return new RGBImageStudent();
 }
 IntensityImage * ImageFactory::ImplementationStudent::newIntensityImage() const {
-	return new IntensityImageStudent();
+	return new IntensityImagePrivate();
 }
 
 
