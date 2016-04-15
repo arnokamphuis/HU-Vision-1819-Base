@@ -22,4 +22,6 @@ public:
 
 	RGB getPixel(int x, int y) const;
 	RGB getPixel(int i) const;
+private:
+	RGB * pixels;
 };
