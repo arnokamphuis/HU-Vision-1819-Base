@@ -9,21 +9,29 @@
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
+
 #include "RGBImageStudent.h"
+#include "RGBImagePrivate.h"
+
+#include "IntensityImageStudent.h"
+#include "IntensityImagePrivate.h"
+
+#include "basetimer.h"
+#include "ImageIO.h"
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
-	RGBImageStudent* rgbImage = new RGBImageStudent(200, 200);
+	ImageIO::debugFolder = "E:\\faces";
+	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
-	rgbImage->setPixel(20, 0, RGB(111, 111, 111));
-	RGB pixel = rgbImage->getPixel(20);
-	std::cout << "Pixel: " << (int)pixel.r << ", " << (int)pixel.g << ", " << (int)pixel.b << std::endl;
+	RGBImageStudent rgbImage;
+	ImageIO::loadImage("E:/faces/face2.jpg", rgbImage);
+	
+	IntensityImage& intensityImage = rgbImage.toGrayScale();
 
-	RGBImageStudent* otherRGBImage = new RGBImageStudent(*rgbImage);
-	RGB otherPixel = rgbImage->getPixel(20, 0);
-	std::cout << "Other pixel: " << (int)otherPixel.r << ", " << (int)otherPixel.g << ", " << (int)otherPixel.b << std::endl;
+	ImageIO::showImage(intensityImage);
 
 	/*
 	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
