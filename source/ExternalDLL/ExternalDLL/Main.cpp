@@ -9,34 +9,43 @@
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
+#include "RGBImageStudent.h"
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
+	RGBImageStudent* rgbImage = new RGBImageStudent(200, 200);
 
-	ImageFactory::setImplementation(ImageFactory::DEFAULT);
-	//ImageFactory::setImplementation(ImageFactory::STUDENT);
+	rgbImage->setPixel(20, 0, RGB(111, 111, 111));
+	RGB pixel = rgbImage->getPixel(20);
+	std::cout << "Pixel: " << (int)pixel.r << ", " << (int)pixel.g << ", " << (int)pixel.b << std::endl;
 
+	RGBImageStudent* otherRGBImage = new RGBImageStudent(*rgbImage);
+	RGB otherPixel = rgbImage->getPixel(20, 0);
+	std::cout << "Other pixel: " << (int)otherPixel.r << ", " << (int)otherPixel.g << ", " << (int)otherPixel.b << std::endl;
 
-	ImageIO::debugFolder = "D:\\Users\\Rolf\\Downloads\\FaceMinMin";
+	/*
+	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
+	ImageFactory::setImplementation(ImageFactory::STUDENT);
+
+	ImageIO::debugFolder = "E:\\faces";
 	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
-
-
+	std::cout << "Started loading image" << std::endl;
 
 	RGBImage * input = ImageFactory::newRGBImage();
-	if (!ImageIO::loadImage("D:\\Users\\Rolf\\Downloads\\TestA5.jpg", *input)) {
+	if (!ImageIO::loadImage("E:\\faces\\face1.jpg", *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
 	}
 
+	std::cout << "Image loaded successfully" << std::endl;
 
 	ImageIO::saveRGBImage(*input, ImageIO::getDebugFileName("debug.png"));
 
 	DLLExecution * executor = new DLLExecution(input);
-
 
 	if (executeSteps(executor)) {
 		std::cout << "Face recognition successful!" << std::endl;
@@ -47,6 +56,8 @@ int main(int argc, char * argv[]) {
 	}
 
 	delete executor;
+	*/
+
 	system("pause");
 	return 1;
 }
