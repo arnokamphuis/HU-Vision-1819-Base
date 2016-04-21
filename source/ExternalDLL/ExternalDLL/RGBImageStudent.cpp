@@ -16,12 +16,26 @@ RGBImageStudent::~RGBImageStudent() {
 }
 
 void RGBImageStudent::set(const int width, const int height) {
+	int size = getWidth() * getHeight();
 	RGBImage::set(width, height);
-	pixels.reserve(width * height);
+
+	if (size > width * height)
+	{
+		// previous vector size is larger than required
+		int offset = size - width * height;
+		pixels.erase(pixels.end() - offset, pixels.end());
+	}
+	else
+	{
+		// required vector size is larger than current vector
+		pixels.reserve(width * height);
+	}
+	
+	
 }
 
 void RGBImageStudent::set(const RGBImageStudent &other) {
-	RGBImage::set(other.getWidth(), other.getHeight());
+	RGBImageStudent::set(other.getWidth(), other.getHeight());
 	pixels = other.getPixels();
 }
 
