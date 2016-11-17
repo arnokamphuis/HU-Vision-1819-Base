@@ -1,0 +1,9 @@
+exclude:
+- /documentatie/.*
+- /implementatieplannen/.*
+- /meetrapporten/.*
+- /testsets/.*
+- /source/ExternalDLL/ExternalDLL/OpenCV
+component_depth: 1
+languages:
+- cpp
