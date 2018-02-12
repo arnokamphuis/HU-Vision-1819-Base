@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E562103B-C7F3-4BD5-831A-28E27252736A}</ProjectGuid>
+    <RootNamespace>ExternalDLL</RootNamespace>
+    <ProjectName>ExternalDLL</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>VISION_DLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\OpenCV\include_vc15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)OpenCV\staticlib_x86_vc15;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d2412.lib;opencv_contrib2412.lib;opencv_core2412.lib;opencv_features2d2412.lib;opencv_flann2412.lib;libtiff.lib;libpng.lib;libjpeg.lib;libjasper.lib;IlmImf.lib;zlib.lib;opencv_gpu2412.lib;opencv_highgui2412.lib;opencv_imgproc2412.lib;opencv_legacy2412.lib;opencv_ml2412.lib;opencv_nonfree2412.lib;opencv_objdetect2412.lib;opencv_photo2412.lib;opencv_stitching2412.lib;opencv_ts2412.lib;opencv_video2412.lib;opencv_videostab2412.lib;Vfw32.Lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\OpenCV\include_vc15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opencv_calib3d2412.lib;opencv_contrib2412.lib;opencv_core2412.lib;opencv_features2d2412.lib;opencv_flann2412.lib;libtiff.lib;libpng.lib;libjpeg.lib;libjasper.lib;IlmImf.lib;zlib.lib;opencv_gpu2412.lib;opencv_highgui2412.lib;opencv_imgproc2412.lib;opencv_legacy2412.lib;opencv_ml2412.lib;opencv_nonfree2412.lib;opencv_objdetect2412.lib;opencv_photo2412.lib;opencv_stitching2412.lib;opencv_ts2412.lib;opencv_video2412.lib;opencv_videostab2412.lib;Vfw32.Lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\OpenCV\staticlib_x86_vc15;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="DefaultExtraction.h" />
+    <ClInclude Include="DefaultLocalization.h" />
+    <ClInclude Include="DefaultPreProcessing.h" />
+    <ClInclude Include="DLLExecution.h" />
+    <ClInclude Include="export.h" />
+    <ClInclude Include="Extraction.h" />
+    <ClInclude Include="Feature.h" />
+    <ClInclude Include="FeatureMap.h" />
+    <ClInclude Include="GrayscaleAlgorithm.h" />
+    <ClInclude Include="SonnetXVIII.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageFactory.h" />
+    <ClInclude Include="ImageIO.h" />
+    <ClInclude Include="IntensityImage.h" />
+    <ClInclude Include="IntensityImagePrivate.h" />
+    <ClInclude Include="IntensityImageStudent.h" />
+    <ClInclude Include="Localization.h" />
+    <ClInclude Include="PixelType.h" />
+    <ClInclude Include="Point2D.h" />
+    <ClInclude Include="PostProcessing.h" />
+    <ClInclude Include="PreProcessing.h" />
+    <ClInclude Include="HereBeDragons.h" />
+    <ClInclude Include="Representation.h" />
+    <ClInclude Include="RGBImage.h" />
+    <ClInclude Include="RGBImagePrivate.h" />
+    <ClInclude Include="RGBImageStudent.h" />
+    <ClInclude Include="StudentExtraction.h" />
+    <ClInclude Include="StudentLocalization.h" />
+    <ClInclude Include="StudentPreProcessing.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DefaultExtraction.cpp" />
+    <ClCompile Include="DefaultLocalization.cpp" />
+    <ClCompile Include="DefaultPreProcessing.cpp" />
+    <ClCompile Include="DLLExecution.cpp" />
+    <ClCompile Include="export.cpp" />
+    <ClCompile Include="Feature.cpp" />
+    <ClCompile Include="FeatureMap.cpp" />
+    <ClCompile Include="GrayscaleAlgorithm.cpp" />
+    <ClCompile Include="SonnetXVIII.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageFactory.cpp" />
+    <ClCompile Include="ImageIO.cpp" />
+    <ClCompile Include="IntensityImage.cpp" />
+    <ClCompile Include="IntensityImagePrivate.cpp" />
+    <ClCompile Include="IntensityImageStudent.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="HereBeDragons.cpp" />
+    <ClCompile Include="PostProcessing.cpp" />
+    <ClCompile Include="Representation.cpp" />
+    <ClCompile Include="RGBImage.cpp" />
+    <ClCompile Include="RGBImagePrivate.cpp" />
+    <ClCompile Include="RGBImageStudent.cpp" />
+    <ClCompile Include="StudentExtraction.cpp" />
+    <ClCompile Include="StudentLocalization.cpp" />
+    <ClCompile Include="StudentPreProcessing.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
