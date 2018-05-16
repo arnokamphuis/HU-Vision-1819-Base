@@ -24,13 +24,19 @@ Het doel is om belangrijke edges (relatief grote veranderingen van intensiteit) 
 
 ### Roberts cross
 
+Hier nog wat over second order maar doen we niet
+
 ## Keuze
 Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waarom bepaalde settings zijn gebruikt.
 
-## Implementatie
+Sobel en canny doen we
 
+Keuze doen we een second order (jordan)
+
+## Implementatie
+Jordan
 Je geeft aan hoe deze keuze is geimplementeerd in de code.
 
 ## Evaluatie
-
+Carlos
 Je geeft aan welke experimenten er gedaan zullen worden om de implementatie te testen en te ‘bewijzen’ dat de implementatie daadwerkelijk correct werkt. Dit geeft direct informatie over de meetrapporten die er zullen worden gemaakt.
