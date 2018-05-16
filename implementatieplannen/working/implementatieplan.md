@@ -12,7 +12,9 @@
 		- 1.3.6. Roberts cross
 	- 1.4. Keuze
 	- 1.5. Implementatie
-	- 1.6. Evaluatie
+	- 1.6. Keuze
+	- 1.7. Implementatie
+	- 1.8. Evaluatie
 
 <!-- /MarkdownTOC -->
 # 1. Implementatieplan
@@ -47,9 +49,20 @@ Edge detection methode zijn op te delen in twee groepen. Eerste order operators 
 Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waarom bepaalde settings zijn gebruikt.
 
 ## 1.5. Implementatie
+Hier nog wat over second order maar doen we niet
 
+## 1.6. Keuze
+Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waarom bepaalde settings zijn gebruikt.
+
+Sobel en canny doen we
+
+Keuze doen we een second order (jordan)
+
+## 1.7. Implementatie
+Jordan
 Je geeft aan hoe deze keuze is geimplementeerd in de code.
 
-## 1.6. Evaluatie
+## 1.8. Evaluatie
 
+Carlos
 Je geeft aan welke experimenten er gedaan zullen worden om de implementatie te testen en te ‘bewijzen’ dat de implementatie daadwerkelijk correct werkt. Dit geeft direct informatie over de meetrapporten die er zullen worden gemaakt.
