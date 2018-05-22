@@ -63,6 +63,6 @@ Jordan
 Je geeft aan hoe deze keuze is geimplementeerd in de code.
 
 ## 1.8. Evaluatie
+De eerste eis die in het doel staat beschreven is het herkennen van de samples uit het framework. Om dit te testen word de gemaakte edge-detection filters om de beurt in het framwork gehangen en word gekeken of alle gezichten in de sample base correct worde herekend.
 
-Carlos
-Je geeft aan welke experimenten er gedaan zullen worden om de implementatie te testen en te ‘bewijzen’ dat de implementatie daadwerkelijk correct werkt. Dit geeft direct informatie over de meetrapporten die er zullen worden gemaakt.
+Als deze test voldoet aan de eis word de tweede eis getest. Hiervoor worden beide filters 10 keer uitgevoerd. De duratie van deze taken word gemeten en zo word bepaald wat de gemiddelde snleheid van het filter is. Hierna zal een vergeleiking tussen de gemaakte filters worden uitgevoerd om te bepalen welke van de twee algoritmes het snelste is.
