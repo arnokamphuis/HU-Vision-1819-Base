@@ -34,10 +34,14 @@ Het doel is om belangrijke edges (relatief grote veranderingen van intensiteit) 
 Edge detection methode zijn op te delen in twee groepen. Eerste order operators en tweede order operators. De eerste order operators zijn gevoeliger voor ruis in de foto. 
 
 ### 1.3.1. Sobel
+Sobel is een 3x3 kernel voor edge detection. Het is zelfs de meest gebruikte. Sobel is redelijk snel aangezien hij uit te drukken is in een enkele kernel.
 
 ### 1.3.2. Canny
+De canny edge detection bestaat uit meerdere stappen. Allereerst word de afbeelding gesmoothed met een gausian filter. Hierna worden de afgeleides berekend in een 2x2 vierkant. Tot slot worden punten die ver uitweiken weg gefilterd. Het voordeel van dit filter is dat het werkt onder meer ruist dan sobel maar nog steeds sneller dan een second order filter.
 
 ### 1.3.3. Deriche
+
+Deriche is een stuk ingewikkelder dan canny en bevat een schaal. Hierdoor kan er worden ingesteld hoe grof de edges gedecteerd worden. Het nadeel van dit filter is dat het nog vereist van de processor. Dit maakt het niet geschikt voor sitaties waar edge detection zo snel mogelijk moet gebeuren
 
 ### 1.3.4. Differential
 
