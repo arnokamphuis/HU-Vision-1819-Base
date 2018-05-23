@@ -45,9 +45,17 @@ Deriche is een stuk ingewikkelder dan canny en bevat een schaal. Hierdoor kan er
 
 ### 1.3.4. Differential
 
+Differential edge detection is een tweede order operatie. Deze operator vindt de verschillen in het gradient van de afbeelding. De edges worden gevonden door in dit gradient zero crossing punten te vinden. Op die plekken liggen de edges. De methode maakt gebruik van een 3x3 kernel. De afbeelding moet door een gaussian filter gehaald worden zodat de afbeelding juist gepresenteerd wordt voor de kernel.
+
+
 ### 1.3.5. Prewitt
 
+De prewitt edge dection methode is een tweede order operatie en berekend op elk punt in de afbeelding het gradient van de intensiteit. De prewitt methode is gevoelig voor ruis in de afbeelding. Om de gevoeligheid voor ruis wat af te nemen wordt er vaak smoothing of een gaussian filter toegepast. Hierdoor neemt de ruis af en kan het resultaat van de prewitt methode betrouwbaarder zijn.
+De operatie maakt gebruik van twee 3x3 kernels, één in de x richting en één in de y richting. Dit maakt het een redelijke snelle operator om uit te voeren. De snelehid gaat echter wel naar beneden als het eindresultaat beter moet zijn door het toevoegen van preprocessing stappen om de ruis weg te halen.
+
 ### 1.3.6. Roberts cross
+
+Berekend edges aan de hand van het gradient. De operatie bestaat uit twee delen. Eerst wordt de afbeelding door een convolve filter gehaald. Vervolgens wordt er per pixel een berekening uitgevoerd. Deze twee stappen zijn vrij eenvoedig en snel uit te voeren. Echter deze methode is ook erg gevoelig voor ruis. Wederom zoals bij de Prewitt methode kan smoothing worden toegepast echter zal de effiecenty hierdoor afnemen.
 
 ## 1.4. Keuze
 Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waarom bepaalde settings zijn gebruikt.
@@ -60,11 +68,14 @@ Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waa
 
 Sobel en canny doen we
 
-Keuze doen we een second order (jordan)
+- Even laten afwachten
+-Keuze doen we een second order (jordan)
 
 ## 1.7. Implementatie
-Jordan
-Je geeft aan hoe deze keuze is geimplementeerd in de code.
+
+De filters die we implementeren bestaan uit twee delen, een filter en de edge detection. Beide delen maken gebruik van een kernel. Dit is het belangrijkste deel om te implementeren. De kernel processor moet als input een afbeelding en een kernel hebben. Als dit deel geimplementeerd is kunnen het filter en edge dection simpel geimplenteerd worden door de juiste kernel te beschrijven en uit te laten rekenen in de kernel processor. 
+
+
 
 ## 1.8. Evaluatie
 De eerste eis die in het doel staat beschreven is het herkennen van de samples uit het framework. Om dit te testen word de gemaakte edge-detection filters om de beurt in het framwork gehangen en word gekeken of alle gezichten in de sample base correct worde herekend.
