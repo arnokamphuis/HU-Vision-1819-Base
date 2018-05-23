@@ -16,13 +16,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -83,6 +83,7 @@
     <ClInclude Include="Feature.h" />
     <ClInclude Include="FeatureMap.h" />
     <ClInclude Include="GrayscaleAlgorithm.h" />
+    <ClInclude Include="Kernel.h" />
     <ClInclude Include="SonnetXVIII.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageFactory.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="Feature.cpp" />
     <ClCompile Include="FeatureMap.cpp" />
     <ClCompile Include="GrayscaleAlgorithm.cpp" />
+    <ClCompile Include="Kernel.cpp" />
     <ClCompile Include="SonnetXVIII.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageFactory.cpp" />

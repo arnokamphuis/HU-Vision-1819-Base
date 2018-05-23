@@ -9,11 +9,19 @@
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
+#include "Kernel.h"
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
+
+	Kernel testPrintKernel = Kernel(3, 3);
+
+	int8_t tKernel[3][3] = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+	testPrintKernel.setKernel(tKernel);
+
+	std::cout << "Test kernel print" << testPrintKernel;
 
 	ImageFactory::setImplementation(ImageFactory::DEFAULT);
 	//ImageFactory::setImplementation(ImageFactory::STUDENT);

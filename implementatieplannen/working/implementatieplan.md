@@ -50,7 +50,7 @@ Differential edge detection is een tweede order operatie. Deze operator vindt de
 
 ### 1.3.5. Prewitt
 
-De prewitt edge dection methode is een tweede order operatie en berekend op elk punt in de afbeelding het gradient van de intensiteit. De prewitt methode is gevoelig voor ruis in de afbeelding. Om de gevoeligheid voor ruis wat af te nemen wordt er vaak smoothing of een gaussian filter toegepast. Hierdoor neemt de ruis af en kan het resultaat van de prewitt methode betrouwbaarder zijn.
+De prewitt edge dection methode is een eerste order operatie en berekend op elk punt in de afbeelding het gradient van de intensiteit. De prewitt methode is gevoelig voor ruis in de afbeelding. Om de gevoeligheid voor ruis wat af te nemen wordt er vaak smoothing of een gaussian filter toegepast. Hierdoor neemt de ruis af en kan het resultaat van de prewitt methode betrouwbaarder zijn.
 De operatie maakt gebruik van twee 3x3 kernels, één in de x richting en één in de y richting. Dit maakt het een redelijke snelle operator om uit te voeren. De snelehid gaat echter wel naar beneden als het eindresultaat beter moet zijn door het toevoegen van preprocessing stappen om de ruis weg te halen.
 
 ### 1.3.6. Roberts cross
@@ -62,6 +62,11 @@ Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waa
 
 ## 1.5. Implementatie
 Hier nog wat over second order maar doen we niet
+
+
+- Implementatie kernel processor
+
+	De kernel moet over de image heen gaan. Dit geeft problemen bij de raden van de foto. De kernel die over de afbeelding gaat valt buiten de foto. Dit valt op te lossen op vier verschillende methodes.
 
 ## 1.6. Keuze
 Je geeft een onderbouwing over waarom een bepaalde methode is gekozen, en/of waarom bepaalde settings zijn gebruikt.
@@ -78,6 +83,6 @@ De filters die we implementeren bestaan uit twee delen, een filter en de edge de
 
 
 ## 1.8. Evaluatie
-De eerste eis die in het doel staat beschreven is het herkennen van de samples uit het framework. Om dit te testen word de gemaakte edge-detection filters om de beurt in het framwork gehangen en word gekeken of alle gezichten in de sample base correct worde herekend.
+De eerste eis die in het doel staat beschreven is het herkennen van de samples uit het framework. Om dit te testen wordt de gemaakte edge-detection filters om de beurt in het framework gehangen en word gekeken of alle gezichten in de sample base correct worden herekend.
 
-Als deze test voldoet aan de eis word de tweede eis getest. Hiervoor worden beide filters 10 keer uitgevoerd. De duratie van deze taken word gemeten en zo word bepaald wat de gemiddelde snleheid van het filter is. Hierna zal een vergeleiking tussen de gemaakte filters worden uitgevoerd om te bepalen welke van de twee algoritmes het snelste is.
+Als deze test voldoet aan de eis word de tweede eis getest. Hiervoor worden de filters 10 keer uitgevoerd. De duratie van deze taken wordt gemeten en zo wordt bepaald wat de gemiddelde snelheid van het filter is. Hierna zal een vergeleiking tussen de gemaakte filters worden uitgevoerd om te bepalen welke van de algoritmes het snelste is.
