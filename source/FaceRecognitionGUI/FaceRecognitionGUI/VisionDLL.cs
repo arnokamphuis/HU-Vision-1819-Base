@@ -16,12 +16,6 @@ using System.Drawing.Imaging;
 
 namespace FaceRecognitionGUI {
     class VisionDLL {
-
-
-
-
-
-
        
         [DllImport("ExternalDll.dll",
                 EntryPoint = "getDLLExecutionTask",
@@ -36,17 +30,12 @@ namespace FaceRecognitionGUI {
                 CallingConvention = CallingConvention.Cdecl)]
         public static extern void freeDLLExecutionTask(IntPtr task);
 
-
-
         [DllImport("ExternalDll.dll",
             EntryPoint = "setImageImplementation",
             ExactSpelling = false,
             CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern void setImageImplementation([MarshalAs(UnmanagedType.I1)] bool student);
-
-
-
 
         [DllImport("ExternalDll.dll",
                 EntryPoint = "executePreProcessingStep1",
@@ -81,9 +70,6 @@ namespace FaceRecognitionGUI {
                 CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool executePreProcessingStep4(IntPtr task, [MarshalAs(UnmanagedType.I1)] bool student);
-
-
-
 
 
         [DllImport("ExternalDll.dll",

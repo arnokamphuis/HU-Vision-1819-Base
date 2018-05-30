@@ -23,7 +23,7 @@ void setKernel(T(&Myarray)[arrWidth][arrHeight]){
 		for (size_t j = 0; j < arrWidth; ++j){
 			int arrPos = j + (i * arrWidth);
 			kernel[arrPos] = Myarray[i][j];
-			kern_test[arrPos] = Myarray[i][j];
+			//kern_test[arrPos] = Myarray[i][j];
 		}
 	}
 }
@@ -55,5 +55,5 @@ private:
 	int8_t width;
 	int8_t height;
 	int * kernel;
-	int kern_test[9];
+	//int kern_test[9];
 };
