@@ -23,6 +23,8 @@ IntensityImage * StudentPreProcessing::stepScaleImage(const IntensityImage &imag
 IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &image) const {
 	IntensityImage * gausFilterImage = ImageFactory::newIntensityImage();
 
+	IntensityImage * edgeEnhanceImage = ImageFactory::newIntensityImage();
+
 	IntensityImage * sobelXDetectionImage = ImageFactory::newIntensityImage();
 
 	IntensityImage * sobelYDetectionImage = ImageFactory::newIntensityImage();
@@ -69,9 +71,9 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 								{ 2, 4, 2 },
 								{ 1, 2, 1 } };
 
-	int normKernel[3][3] = {	{ 1, 1, 1 },
-								{ 1, 1, 1 },
-								{ 1, 1, 1 } };
+	int normKernel[3][3] = {	{ 0, 0, 0 },
+								{ 0, 1, 0},
+								{ 0, 0, 0 } };
 
 	int edgeEnhance[3][3] = { { -1, -1, -1 },
 	{ -1, 1, -1 },
@@ -88,7 +90,7 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 	{ 0, 0, 0 },
 	{ -3, -10, -3 } };
 
-	gausKernel.setKernel(edgeEnhance);
+	gausKernel.setKernel(normKernel);
 	//gausKernel.setKernelNormalize(16);
 
 	sobelX.setKernel(sobelXkernel);
@@ -109,11 +111,16 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 	//imgFunc::convolve(gausFilterImage, sobelXimg, sobelX);
 	//imgFunc::convolve(gausFilterImage, sobelYimg, sobelY);
 
+	imgFunc::edgeEnhance(gausFilterImage, edgeEnhanceImage);
+
+	return edgeEnhanceImage;
 
 	//abs combine
 	//imgFunc::combineGradientMagnitude(sobelXimg, sobelYimg, sobelOutput);
 
-	imgFunc::sobelFilter(gausFilterImage, sobelOutput);
+	imgFunc::sobelFilter(edgeEnhanceImage, sobelOutput);
+
+	return sobelOutput;
 
 	//imgFunc::convolve(sobelOutput, gausFilterImage, gausKernel);
 
@@ -191,9 +198,9 @@ IntensityImage * StudentPreProcessing::stepThresholding(const IntensityImage &sr
 
 	//cv::adaptiveThreshold(OverHillOverDale, OverHillOverDale, 255, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 11, 2);
 
-	//cv::threshold(OverHillOverDale, OverHillOverDale, 22, 255, cv::THRESH_BINARY_INV);
+	cv::threshold(OverHillOverDale, OverHillOverDale, 116, 255, cv::THRESH_BINARY_INV);
 
-	cv::threshold(OverHillOverDale, OverHillOverDale, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
+	//cv::threshold(OverHillOverDale, OverHillOverDale, 0, 255, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
 	IntensityImage * ThoroughBushThoroughBrier = ImageFactory::newIntensityImage();
 	HereBeDragons::NoWantOfConscienceHoldItThatICall(OverHillOverDale, *ThoroughBushThoroughBrier);
 	return ThoroughBushThoroughBrier;

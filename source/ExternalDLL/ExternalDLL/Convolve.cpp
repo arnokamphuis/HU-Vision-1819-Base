@@ -251,8 +251,8 @@ namespace imgFunc{
 
 				float Accumulator = 0;
 				float tempY = 0;
-				int xn = -1;
-				int yn = -1;
+				int xn = -sobelX.getKernelxOffset();
+				int yn = -sobelX.getKernelyOffset();
 
 				for (int i = sobelX.getKernelHeight() - 1; i >= 0; i--){
 					for (int j = sobelX.getKernelWidth() - 1; j >= 0; j--){
@@ -261,15 +261,109 @@ namespace imgFunc{
 						xn += 1;
 					}
 					yn += 1;
-					xn = -1;
+					xn = -sobelX.getKernelxOffset();
 				}
 
 				Accumulator = sqrt(pow(Accumulator, 2) + pow(tempY, 2));
 
-				Accumulator = ((Accumulator - min) / (max - min)) * (UINT8_MAX - 0);
+				//Accumulator = ((Accumulator - min) / (max - min)) * (UINT8_MAX - 0);
+
+				if (Accumulator >= 800){
+					Accumulator = 255;
+					std::cout << "+";
+				}else if (Accumulator < 0){
+					Accumulator = 800;
+					std::cout << "-";
+				}
+				else{
+					Accumulator = ((Accumulator - min) / (max - min)) * (UINT8_MAX - 0);
+				}
+
+				
 
 				outputImage->setPixel(x, y, Accumulator);
 				
+			}
+		}
+
+	}
+
+	void edgeEnhance(const IntensityImage * inputImage, IntensityImage * outputImage){
+
+		Kernel edgeEnhance = Kernel(9, 9);
+
+		int edgeEnhanceK[3][3] = {	{ -1, -1, -1 },
+									{ -1, 20, -1 },
+									{ -1, -1, -1 } };
+
+		int edgeEnhanceOrg[9][9] = { { 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+		{ 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+		{ 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+		{ 1, 1, 1, -4, -4, -4, 1, 1, 1 },
+		{ 1, 1, 1, -4, -4, -4, 1, 1, 1 },
+		{ 1, 1, 1, -4, -4, -4, 1, 1, 1 },
+		{ 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+		{ 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+		{ 0, 0, 0, 1, 1, 1, 0, 0, 0 } };
+
+		edgeEnhance.setKernel(edgeEnhanceOrg);
+
+		outputImage->set(inputImage->getWidth() - (edgeEnhance.getKernelxOffset() * 2), inputImage->getHeight() - (edgeEnhance.getKernelyOffset() * 2));
+
+		//min max
+		int max = INT_MIN;
+		int min = INT_MAX;
+
+
+		for (int y = 0; y < outputImage->getHeight(); y++){
+			for (int x = 0; x < outputImage->getWidth(); x++){
+
+				float Accumulator = 0;
+				float tempY = 0;
+				int xn = -edgeEnhance.getKernelxOffset();
+				int yn = -edgeEnhance.getKernelyOffset();
+
+				for (int i = edgeEnhance.getKernelHeight() - 1; i >= 0; i--){
+					for (int j = edgeEnhance.getKernelWidth() - 1; j >= 0; j--){
+						Accumulator += (edgeEnhance.getKernelPoint(i, j) * inputImage->getPixel(x + edgeEnhance.getKernelxOffset() + xn, y + edgeEnhance.getKernelyOffset() + yn)) / edgeEnhance.getKernelNormalize();
+						xn += 1;
+					}
+					yn += 1;
+					xn = -edgeEnhance.getKernelxOffset();
+				}
+
+				if (Accumulator > max){
+					max = Accumulator;
+				}
+				else if (Accumulator < min){
+					min = Accumulator;
+				}
+			}
+		}
+
+		//std::cout << "Acc " << max << " " << min;
+
+		for (int y = 0; y < outputImage->getHeight(); y++){
+			for (int x = 0; x < outputImage->getWidth(); x++){
+
+				float Accumulator = 0;
+				float tempY = 0;
+				int xn = -edgeEnhance.getKernelxOffset();
+				int yn = -edgeEnhance.getKernelyOffset();
+
+				for (int i = edgeEnhance.getKernelHeight() - 1; i >= 0; i--){
+					for (int j = edgeEnhance.getKernelWidth() - 1; j >= 0; j--){
+						Accumulator += (edgeEnhance.getKernelPoint(i, j) * inputImage->getPixel(x + edgeEnhance.getKernelxOffset() + xn, y + edgeEnhance.getKernelyOffset() + yn)) / edgeEnhance.getKernelNormalize();
+						xn += 1;
+					}
+					yn += 1;
+					xn = -edgeEnhance.getKernelxOffset();
+				}
+
+				Accumulator = ((Accumulator - min) / (max - min)) * (UINT8_MAX - 0);
+
+				outputImage->setPixel(x, y, Accumulator);
+
 			}
 		}
 

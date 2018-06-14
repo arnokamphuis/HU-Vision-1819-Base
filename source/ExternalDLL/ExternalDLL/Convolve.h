@@ -7,4 +7,5 @@ namespace imgFunc{
 	void convolve(const IntensityImage &inputImage, IntensityImage *outputImage, Kernel & kernel);
 	void combineGradientMagnitude(const IntensityImage *firstImage, const IntensityImage *secondImage, IntensityImage * outputImage);
 	void sobelFilter(const IntensityImage * inputImage, IntensityImage * outputImage);
+	void edgeEnhance(const IntensityImage * inputImage, IntensityImage * outputImage);
 }
