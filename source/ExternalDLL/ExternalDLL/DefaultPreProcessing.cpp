@@ -48,6 +48,7 @@ IntensityImage * DefaultPreProcessing::stepThresholding(const IntensityImage &sr
 	cv::Mat OverHillOverDale;
 	HereBeDragons::HerLoveForWhoseDearLoveIRiseAndFall(src, OverHillOverDale);
 	cv::threshold(OverHillOverDale, OverHillOverDale, 220, 255, cv::THRESH_BINARY_INV);
+	//cv::threshold(OverHillOverDale, OverHillOverDale, 35, 255, cv::THRESH_BINARY_INV);
 	IntensityImage * ThoroughBushThoroughBrier = ImageFactory::newIntensityImage();
 	HereBeDragons::NoWantOfConscienceHoldItThatICall(OverHillOverDale, *ThoroughBushThoroughBrier);
 	return ThoroughBushThoroughBrier;

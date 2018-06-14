@@ -117,6 +117,9 @@
     <ClInclude Include="Kernel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Convolve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Image.cpp">
@@ -195,6 +198,9 @@
       <Filter>Source Files\private\disableautocomplete</Filter>
     </ClCompile>
     <ClCompile Include="Kernel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Convolve.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

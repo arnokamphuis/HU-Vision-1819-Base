@@ -74,6 +74,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="Convolve.h" />
     <ClInclude Include="DefaultExtraction.h" />
     <ClInclude Include="DefaultLocalization.h" />
     <ClInclude Include="DefaultPreProcessing.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="StudentPreProcessing.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Convolve.cpp" />
     <ClCompile Include="DefaultExtraction.cpp" />
     <ClCompile Include="DefaultLocalization.cpp" />
     <ClCompile Include="DefaultPreProcessing.cpp" />

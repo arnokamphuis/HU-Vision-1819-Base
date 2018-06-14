@@ -15,26 +15,20 @@ void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
-
-	Kernel testPrintKernel = Kernel(3, 3);
-
-	int8_t tKernel[3][3] = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
-	testPrintKernel.setKernel(tKernel);
-
-	std::cout << "Test kernel print" << testPrintKernel;
+	
 
 	ImageFactory::setImplementation(ImageFactory::DEFAULT);
 	//ImageFactory::setImplementation(ImageFactory::STUDENT);
 
 
-	ImageIO::debugFolder = "C:\\Users\\Jordan\\Documents\\HU-Vision-Carlos-Jordan\\testsets\\Set A\\TestSet Images";
+	ImageIO::debugFolder = "D:\\Users\\Jordan\\Documents\\GitHub\\HU-Vision-Carlos-Jordan\\testsets\\Set A\\TestSet Images";
 	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
 
 
 
 	RGBImage * input = ImageFactory::newRGBImage();
-	if (!ImageIO::loadImage("C:\\Users\\Jordan\\Documents\\HU-Vision-Carlos-Jordan\\testsets\\Set A\\TestSet Images\\female-2.png", *input)) {
+	if (!ImageIO::loadImage("D:\\Users\\Jordan\\Documents\\GitHub\\HU-Vision-Carlos-Jordan\\testsets\\Set A\\TestSet Images\\female-1.png", *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
@@ -82,13 +76,14 @@ bool executeSteps(DLLExecution * executor) {
 	}
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep2, ImageIO::getDebugFileName("Pre-processing-2.png"));
 
+	//Edge detection
 	if (!executor->executePreProcessingStep3(true)) {
 		std::cout << "Pre-processing step 3 failed!" << std::endl;
 		return false;
 	}
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep3, ImageIO::getDebugFileName("Pre-processing-3.png"));
 
-	if (!executor->executePreProcessingStep4(false)) {
+	if (!executor->executePreProcessingStep4(true)) {
 		std::cout << "Pre-processing step 4 failed!" << std::endl;
 		return false;
 	}

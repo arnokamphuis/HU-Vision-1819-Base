@@ -1,27 +1,40 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <iostream>
+#include "StudentPreProcessing.h"
 #pragma once
 
 
 class Kernel{
 public:
-	Kernel(const int8_t width, const  int8_t height);
+	Kernel(const int width, const  int height);
+	Kernel(const int width, const  int height, int & arr);
 	~Kernel();
 
-	void setKernelPoint(const int8_t x, const int8_t y, const int8_t value);
+	void setKernelPoint(const int x, const int y, const int value);
 
-	int8_t getKernelPoint(const int8_t x, const int8_t y);
+	int getKernelPoint(const int x, const int y);
 
-	int8_t getKernelWidth();
+	int getKernelWidth();
 
-	int8_t getKernelHeight();
+	int getKernelHeight();
 
-template<typename T, int8_t arrWidth, int8_t arrHeight>
+	int getKernelxOffset();
+
+	int getKernelyOffset();
+
+	void setKernelNormalize(int x);
+
+	int getKernelNormalize();
+
+	void parseImageWithKernel(const IntensityImage &originalImage, IntensityImage *resultImage);
+	void parseImageWithKernel(const IntensityImage *originalImage, IntensityImage *resultImage);
+
+template<typename T, int arrWidth, int arrHeight>
 void setKernel(T(&Myarray)[arrWidth][arrHeight]){
 	for (size_t i = 0; i < arrHeight; ++i){
 		for (size_t j = 0; j < arrWidth; ++j){
-			int arrPos = j + (i * arrWidth);
+			int arrPos = i + (j * arrWidth);
 			kernel[arrPos] = Myarray[i][j];
 			//kern_test[arrPos] = Myarray[i][j];
 		}
@@ -48,12 +61,20 @@ friend std::ostream& operator<<(std::ostream& os, Kernel& obj){
 		os << "\n";
 	}
 
+	os << "xoffset = " << obj.xOffset << "\tyOffset = " << obj.yOffset;
+
 	return os;
 }
 
 private:
-	int8_t width;
-	int8_t height;
+	int width;
+	int height;
+
+	int xOffset;
+	int yOffset;
+
 	int * kernel;
 	//int kern_test[9];
+
+	int normalize = 1;
 };
