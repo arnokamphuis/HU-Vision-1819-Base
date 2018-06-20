@@ -10,6 +10,7 @@
 #include "ImageFactory.h"
 #include "DLLExecution.h"
 #include "Kernel.h"
+#include <chrono>
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
@@ -77,11 +78,29 @@ bool executeSteps(DLLExecution * executor) {
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep2, ImageIO::getDebugFileName("Pre-processing-2.png"));
 
 	//Edge detection
-	if (!executor->executePreProcessingStep3(false)) {
+	
+	//
+	long long totaalTijd = 0;
+
+	for (int i = 0; i < 30; ++i){
+
+	std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+	if (!executor->executePreProcessingStep3(true)) {
 		std::cout << "Pre-processing step 3 failed!" << std::endl;
 		return false;
 	}
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep3, ImageIO::getDebugFileName("Pre-processing-3.png"));
+	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+	
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
+	totaalTijd += duration;
+	std::cout << duration << "\n";
+	}
+
+	std::cout << "Duratie van edge detection in microseconds: " << totaalTijd/30;
+
+
+
 
 	if (!executor->executePreProcessingStep4(false)) {
 		std::cout << "Pre-processing step 4 failed!" << std::endl;

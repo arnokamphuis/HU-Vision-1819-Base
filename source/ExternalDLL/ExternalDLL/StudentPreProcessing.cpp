@@ -97,19 +97,7 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 	sobelY.setKernel(sobelYkernel);
 
 
-
-	//sobelLRXKernel.setKernel(sobelXDirectionKernel);
-	//sobelLRYKernel.setKernel(sobelXRDirectionKernel);
-
-	//sobelUDXKernel.setKernel(sobelYDirectionKernel);
-	//sobelUDYKernel.setKernel(sobelYRDirectionKernel);
-
-	//gausKernel.parseImageWithKernel(image, gausFilterImage);
-
 	imgFunc::convolve(image, gausFilterImage, gausKernel);
-
-	//imgFunc::convolve(gausFilterImage, sobelXimg, sobelX);
-	//imgFunc::convolve(gausFilterImage, sobelYimg, sobelY);
 
 	imgFunc::edgeEnhance(gausFilterImage, edgeEnhanceImage);
 

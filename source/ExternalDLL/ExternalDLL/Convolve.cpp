@@ -78,7 +78,7 @@ namespace imgFunc{
 			}
 		}
 		//return;
-		std::cout << "Max: " << max << "\tMin" << min << "Count:" << thres << "\n";
+		//std::cout << "Max: " << max << "\tMin" << min << "Count:" << thres << "\n";
 		for (int y = 0; y < outputImage->getHeight(); y++){
 			for (int x = 0; x < outputImage->getWidth(); x++){
 				float Accumulator = 0;
@@ -117,7 +117,7 @@ namespace imgFunc{
 
 				if (thres > 1){
 					if (Accumulator < 0){
-						std::cout << Accumulator << " ";
+						//std::cout << Accumulator << " ";
 					}
 					Accumulator = ((Accumulator - 0) * UINT8_MAX) / (UINT8_MAX - 0);
 				}
@@ -125,11 +125,11 @@ namespace imgFunc{
 					if (Accumulator >= UINT8_MAX)
 					{
 						Accumulator = UINT8_MAX;
-						std::cout << "+";
+						//std::cout << "+";
 					}
 					else if (Accumulator < 0){
 						Accumulator = 0;
-						std::cout << "-";
+						//std::cout << "-";
 					}
 				}
 				outputImage->setPixel(x, y, Accumulator);
@@ -219,7 +219,7 @@ namespace imgFunc{
 		for (int y = 0; y < outputImage->getHeight(); y++){
 			for (int x = 0; x < outputImage->getWidth(); x++){
 
-				float Accumulator = 0;
+				float Accumulator = 0; // is tempX
 				float tempY = 0;
 				int xn = -sobelX.getKernelxOffset();
 				int yn = -sobelX.getKernelyOffset();
@@ -233,6 +233,8 @@ namespace imgFunc{
 					yn += 1;
 					xn = -sobelX.getKernelxOffset();
 				}
+
+
 
 				Accumulator = sqrt(pow(Accumulator, 2) + pow(tempY, 2));
 
@@ -270,10 +272,10 @@ namespace imgFunc{
 
 				if (Accumulator >= 800){
 					Accumulator = 255;
-					std::cout << "+";
+					//std::cout << "+";
 				}else if (Accumulator < 0){
 					Accumulator = 800;
-					std::cout << "-";
+					//std::cout << "-";
 				}
 				else{
 					Accumulator = ((Accumulator - min) / (max - min)) * (UINT8_MAX - 0);
