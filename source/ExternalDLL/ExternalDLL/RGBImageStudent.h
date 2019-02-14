@@ -6,7 +6,10 @@
 
 #pragma once
 #include "RGBImage.h"
+#include <unordered_map>
 class RGBImageStudent : public RGBImage {
+private:
+	std::unordered_map<int, RGB> pixels;
 public:
 
 	RGBImageStudent();
@@ -17,9 +20,14 @@ public:
 	void set(const int width, const int height);
 	void set(const RGBImageStudent &other);
 
+	int getPosition(int x, int y) const;
+
+	std::unordered_map<int, RGB> getPixels();
+
 	void setPixel(int x, int y, RGB pixel);
 	void setPixel(int i, RGB pixel);
 
 	RGB getPixel(int x, int y) const;
 	RGB getPixel(int i) const;
 };
+

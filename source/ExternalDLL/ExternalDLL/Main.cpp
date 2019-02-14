@@ -9,42 +9,32 @@
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
+#include "RGBImageStudent.h"
 
 void drawFeatureDebugImage(IntensityImage &image, FeatureMap &features);
 bool executeSteps(DLLExecution * executor);
 
 int main(int argc, char * argv[]) {
 
-	ImageFactory::setImplementation(ImageFactory::DEFAULT);
-	//ImageFactory::setImplementation(ImageFactory::STUDENT);
+	//ImageFactory::setImplementation(ImageFactory::DEFAULT);
+	ImageFactory::setImplementation(ImageFactory::STUDENT);
 
 
-	ImageIO::debugFolder = "D:\\Users\\Rolf\\Downloads\\FaceMinMin";
+	ImageIO::debugFolder = "C:\\ti-software\\Image";
 	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
-
-
-
-	RGBImage * input = ImageFactory::newRGBImage();
-	if (!ImageIO::loadImage("D:\\Users\\Rolf\\Downloads\\TestA5.jpg", *input)) {
+	RGBImage* input = ImageFactory::newRGBImage();
+	if (!ImageIO::loadImage("C:\\ti-software\\Image\\surround.jpg", *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
 	}
-
-
 	ImageIO::saveRGBImage(*input, ImageIO::getDebugFileName("debug.png"));
 
-	DLLExecution * executor = new DLLExecution(input);
+	DLLExecution * executor = new DLLExecution(input);  
+	auto * img = executor->studentPreProcessing.stepToIntensityImage(*input);
 
-
-	if (executeSteps(executor)) {
-		std::cout << "Face recognition successful!" << std::endl;
-		std::cout << "Facial parameters: " << std::endl;
-		for (int i = 0; i < 16; i++) {
-			std::cout << (i+1) << ": " << executor->facialParameters[i] << std::endl;
-		}
-	}
+	ImageIO::saveIntensityImage(*img, ImageIO::getDebugFileName("grayscaled.png"));
 
 	delete executor;
 	system("pause");
