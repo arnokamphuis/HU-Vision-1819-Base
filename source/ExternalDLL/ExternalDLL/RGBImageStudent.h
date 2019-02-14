@@ -22,8 +22,6 @@ public:
 
 	int getPosition(int x, int y) const;
 
-	std::unordered_map<int, RGB> getPixels();
-
 	void setPixel(int x, int y, RGB pixel);
 	void setPixel(int i, RGB pixel);
 

@@ -20,7 +20,6 @@ void RGBImageStudent::set(const int width, const int height) {
 void RGBImageStudent::set(const RGBImageStudent &other) {
 	RGBImage::set(other.getWidth(), other.getHeight());
 	pixels.clear();
-	pixels = getPixels();
 }
 
 int RGBImageStudent::getPosition(int x, int y) const{
@@ -28,9 +27,6 @@ int RGBImageStudent::getPosition(int x, int y) const{
 	return (x * 1000) + y;
 }
 
-std::unordered_map<int, RGB> RGBImageStudent::getPixels() {
-	return pixels;
-}
 void RGBImageStudent::setPixel(int x, int y, RGB pixel) {
 	setPixel(getPosition(x, y), pixel);
 }

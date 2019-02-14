@@ -6,6 +6,7 @@
 
 #pragma once
 #include "IntensityImage.h"
+#include "RGBImageStudent.h"
 #include <unordered_map>
 class IntensityImageStudent : public IntensityImage {
 private:
@@ -14,6 +15,7 @@ public:
 	IntensityImageStudent();
 	IntensityImageStudent(const IntensityImageStudent &other);
 	IntensityImageStudent(const int width, const int height);
+	IntensityImageStudent(const RGBImage & image);
 	~IntensityImageStudent();
 
 	void set(const int width, const int height);
