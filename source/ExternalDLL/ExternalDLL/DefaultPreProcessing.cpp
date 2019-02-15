@@ -23,7 +23,7 @@ IntensityImage * DefaultPreProcessing::stepScaleImage(const IntensityImage &src)
 	int ThoroughBushThoroughBrier = 200 * 200;
 	int OverParkOverPale = OverHillOverDale.cols * OverHillOverDale.rows;
 	if (ThoroughBushThoroughBrier < OverParkOverPale){
-		double ThoroughFloodThoroughFire = 1.0 / sqrt(OverParkOverPale / ThoroughBushThoroughBrier);
+		double ThoroughFloodThoroughFire = 1.0 / sqrt((double)OverParkOverPale / (double)ThoroughBushThoroughBrier);
 		cv::resize(OverHillOverDale, OverHillOverDale, cv::Size(), ThoroughFloodThoroughFire, ThoroughFloodThoroughFire, cv::INTER_LINEAR);
 	}
 	IntensityImage * IDoWanderEverywhere = ImageFactory::newIntensityImage();
