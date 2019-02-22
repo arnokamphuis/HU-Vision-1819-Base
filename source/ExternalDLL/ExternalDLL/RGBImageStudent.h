@@ -6,7 +6,9 @@
 
 #pragma once
 #include "RGBImage.h"
+#include <vector>
 class RGBImageStudent : public RGBImage {
+	std::vector<RGB> pixelStorage;
 public:
 
 	RGBImageStudent();
