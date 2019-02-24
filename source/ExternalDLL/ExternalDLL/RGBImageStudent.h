@@ -5,8 +5,11 @@
 */
 
 #pragma once
+#include <vector>
 #include "RGBImage.h"
 class RGBImageStudent : public RGBImage {
+private:
+	std::vector<RGB> pixelStorage;
 public:
 
 	RGBImageStudent();
