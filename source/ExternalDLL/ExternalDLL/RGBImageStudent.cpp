@@ -8,8 +8,8 @@ RGBImageStudent::RGBImageStudent() : RGBImage() {
 RGBImageStudent::RGBImageStudent(const RGBImageStudent &other) : RGBImage(other.getWidth(), other.getHeight()) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: Create a copy from the other object
-	pixelStorage.clear();
-	for (unsigned int i = 0; i < getWidth() * getHeight(); i++) {
+	int imageSize = other.getWidth() * other.getHeight();
+	for (int i = 0; i < imageSize; i++) {
 		pixelStorage.push_back(other.getPixel(i));
 	}
 }
@@ -18,16 +18,12 @@ RGBImageStudent::RGBImageStudent(const RGBImageStudent &other) : RGBImage(other.
 RGBImageStudent::RGBImageStudent(const int width, const int height) : RGBImage(width, height) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: Initialize pixel storage
-	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
-		pixelStorage.push_back(RGB(0, 0, 0));
-	}
+	pixelStorage.resize(width*height);
 }
 
 RGBImageStudent::~RGBImageStudent() {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: delete allocated objects
-	pixelStorage.clear();
 }
 
 void RGBImageStudent::set(const int width, const int height) {
@@ -35,9 +31,7 @@ void RGBImageStudent::set(const int width, const int height) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: resize or create a new pixel storage (Don't forget to delete the old storage)
 	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
-		pixelStorage.push_back(RGB(0, 0, 0));
-	}
+	pixelStorage.resize(width*height);
 }
 
 void RGBImageStudent::set(const RGBImageStudent &other) {
@@ -45,7 +39,9 @@ void RGBImageStudent::set(const RGBImageStudent &other) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: resize or create a new pixel storage and copy the object (Don't forget to delete the old storage)
 	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
+	int imageSize = other.getWidth() * other.getHeight();
+	pixelStorage.resize(imageSize);
+	for (int i = 0; i < imageSize; i++) {
 		pixelStorage.push_back(other.getPixel(i));
 	}
 }
@@ -53,7 +49,11 @@ void RGBImageStudent::set(const RGBImageStudent &other) {
 void RGBImageStudent::setPixel(int x, int y, RGB pixel) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: no comment needed :)
-	pixelStorage[y * getWidth() + x] = pixel;
+
+	int i = y * RGBImage::getWidth() + x;
+	//setPixel(i, pixel);
+	//pixelStorage[y * getWidth() + x] = pixel;
+	pixelStorage[i] = pixel;
 }
 
 void RGBImageStudent::setPixel(int i, RGB pixel) {
@@ -85,7 +85,11 @@ void RGBImageStudent::setPixel(int i, RGB pixel) {
 RGB RGBImageStudent::getPixel(int x, int y) const {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: no comment needed :)
-	return pixelStorage[y * getWidth() + x];
+
+	int i = y * RGBImage::getWidth() + x;
+	//return getPixel(i);
+	//return pixelStorage[y * getWidth() + x];
+	return pixelStorage[i];
 }
 
 RGB RGBImageStudent::getPixel(int i) const {

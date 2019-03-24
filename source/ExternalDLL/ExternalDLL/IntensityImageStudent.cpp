@@ -8,8 +8,8 @@ IntensityImageStudent::IntensityImageStudent() : IntensityImage() {
 IntensityImageStudent::IntensityImageStudent(const IntensityImageStudent &other) : IntensityImage(other.getWidth(), other.getHeight()) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: Create a copy from the other object
-	pixelStorage.clear();
-	for (unsigned int i = 0; i < getWidth() * getHeight(); i++) {
+	int imageSize = other.getWidth() * other.getHeight();
+	for (int i = 0; i < imageSize; i++) {
 		pixelStorage.push_back(other.getPixel(i));
 	}
 }
@@ -17,16 +17,12 @@ IntensityImageStudent::IntensityImageStudent(const IntensityImageStudent &other)
 IntensityImageStudent::IntensityImageStudent(const int width, const int height) : IntensityImage(width, height) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: Initialize pixel storage
-	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
-		pixelStorage.push_back(Intensity(0));
-	}
+	pixelStorage.resize(width*height);
 }
 
 IntensityImageStudent::~IntensityImageStudent() {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: delete allocated objects
-	pixelStorage.clear();
 }
 
 void IntensityImageStudent::set(const int width, const int height) {
@@ -34,9 +30,7 @@ void IntensityImageStudent::set(const int width, const int height) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: resize or create a new pixel storage (Don't forget to delete the old storage)
 	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
-		pixelStorage.push_back(Intensity(0));
-	}
+	pixelStorage.resize(width*height);
 }
 
 void IntensityImageStudent::set(const IntensityImageStudent &other) {
@@ -44,7 +38,9 @@ void IntensityImageStudent::set(const IntensityImageStudent &other) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: resize or create a new pixel storage and copy the object (Don't forget to delete the old storage)
 	pixelStorage.clear();
-	for (unsigned int i = 0; i < (getWidth() * getHeight()); i++) {
+	int imageSize = other.getWidth() * other.getHeight();
+	pixelStorage.resize(imageSize);
+	for (int i = 0; i < imageSize; i++) {
 		pixelStorage.push_back(other.getPixel(i));
 	}
 }
@@ -52,7 +48,11 @@ void IntensityImageStudent::set(const IntensityImageStudent &other) {
 void IntensityImageStudent::setPixel(int x, int y, Intensity pixel) {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: no comment needed :)
-	pixelStorage[y * getWidth() + x] = pixel;
+	
+	int i = y * IntensityImage::getWidth() + x;
+	//setPixel(i, pixel);
+	//pixelStorage[y * getWidth() + x] = pixel;
+	pixelStorage[i] = pixel;
 }
 
 void IntensityImageStudent::setPixel(int i, Intensity pixel) {
@@ -84,7 +84,11 @@ void IntensityImageStudent::setPixel(int i, Intensity pixel) {
 Intensity IntensityImageStudent::getPixel(int x, int y) const {
 	//int throwError = 0, e = 1 / throwError;
 	//TODO: no comment needed :)
-	return pixelStorage[y * getWidth() + x];
+
+	int i = y * IntensityImage::getWidth() + x;
+	//return getPixel(i);
+	//return pixelStorage[y * getWidth() + x];
+	return pixelStorage[i];
 }
 
 Intensity IntensityImageStudent::getPixel(int i) const {
