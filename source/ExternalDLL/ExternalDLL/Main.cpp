@@ -4,8 +4,8 @@
 * Proprietary and confidential
 */
 
-#include <iostream> 
-#include "ImageIO.h"
+#include <iostream> //std::cout
+#include "ImageIO.h" //Image load and save functionality
 #include "HereBeDragons.h"
 #include "ImageFactory.h"
 #include "DLLExecution.h"
@@ -23,15 +23,12 @@ int main(int argc, char * argv[]) {
 	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
 
 
-
-
 	RGBImage * input = ImageFactory::newRGBImage();
 	if (!ImageIO::loadImage("C:\\Users\\Twan\\Documents\\git\\HU-Vision\\source\\ExternalDLL\\Debug\\child-1.png", *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
 	}
-
 
 	ImageIO::saveRGBImage(*input, ImageIO::getDebugFileName("debug.png"));
 
@@ -42,7 +39,7 @@ int main(int argc, char * argv[]) {
 		std::cout << "Face recognition successful!" << std::endl;
 		std::cout << "Facial parameters: " << std::endl;
 		for (int i = 0; i < 16; i++) {
-			std::cout << (i+1) << ": " << executor->facialParameters[i] << std::endl;
+			std::cout << (i + 1) << ": " << executor->facialParameters[i] << std::endl;
 		}
 	}
 
@@ -50,15 +47,6 @@ int main(int argc, char * argv[]) {
 	system("pause");
 	return 1;
 }
-
-
-
-
-
-
-
-
-
 
 bool executeSteps(DLLExecution * executor) {
 
