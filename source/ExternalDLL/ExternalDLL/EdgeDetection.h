@@ -25,7 +25,7 @@ namespace ed{
 		{
 			for (int y = 0; y < image.getHeight(); y++) {
 				for (int x = 0; x < image.getWidth(); x++) {
-					m[y][x] = image.getPixel(x, y);
+					m[y][x] = image.getPixel(y, x);
 				}
 			}
 		}
@@ -44,7 +44,6 @@ namespace ed{
 			for (int y = 0; y < org_height; y++) {
 				for (int x = 0; x < org_width; x++) {
 					img_ptr->setPixel(x, y, (char)m[x][y]);
-					std::cout << m[x][y];
 				}
 			}
 			return img_ptr;
@@ -68,12 +67,12 @@ namespace ed{
 		new_image.org_height = image.org_height;
 		new_image.org_width = image.org_width;
 
-		for (int i = 0; i < image.height; ++i){              // rows
-			for (int j = 0; j < image.width; ++j){          // columns
-				for (int m = 0; m < kernel_height; ++m){     // kernel rows
-					int mm = kernel_height - 1 - m;      // row index of flipped kernel
-					for (int n = 0; n < kernel_width; ++n){ // kernel columns
-						int nn = kernel_width - 1 - n;  // column index of flipped kernel
+		for (int i = 0; i < image.height; ++i){					// rows
+			for (int j = 0; j < image.width; ++j){				// columns
+				for (int m = 0; m < kernel_height; ++m){		// kernel rows
+					int mm = kernel_height - 1 - m;				// row index of flipped kernel
+					for (int n = 0; n < kernel_width; ++n){		// kernel columns
+						int nn = kernel_width - 1 - n;			// column index of flipped kernel
 
 						// index of input signal, used for checking boundary
 						int ii = i + (kernel_center_Y - mm);

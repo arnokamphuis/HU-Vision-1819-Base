@@ -15,7 +15,7 @@ IntensityImage * StudentPreProcessing::stepScaleImage(const IntensityImage &imag
 }
 
 IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &image) const { // aanpassen
-	ed::matrix<250,250> m(image);
+	ed::matrix<260,260> m(image);
 	ed::matrix<9, 9> kernel({ {
 	{0,0,0,1,1,1,0,0,0},
 	{0,0,0,1,1,1,0,0,0},
@@ -29,32 +29,46 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 } });
 
 	auto convulutioned = ed::convolution(m, kernel);
+	std::cout << convulutioned[0][0] << std::endl;
 
-	for (unsigned int i = 0; i < image.getHeight(); i++) {
-		for (unsigned int j = 0; j < image.getWidth(); j++) {
-
-			auto x = m[i][j];
-			uint8_t num = 0;
-			for (unsigned int i = 0; i < 8; i++) {
-				((x >> i) & 0b1) ? num += pow(2, i) : num += 0;
+	for (unsigned int i = 0; i < convulutioned.org_height; i++)
+	{
+		for (unsigned int j = 0; j < convulutioned.org_width; j++)
+		{
+			if (convulutioned[i][j] <= 185 || convulutioned[i][j] > 2500) {
+				convulutioned[i][j] = 0;
 			}
-			std::cout << ((int)num < 220) ? 1 : 0;
+			else {
+				convulutioned[i][j] = 255;
+			}
 		}
-		std::cout << std::endl;
 	}
 
-	for (unsigned int i = 0; i < image.getHeight(); i++) {
-		for (unsigned int j = 0; j < image.getWidth(); j++) {
+	//for (unsigned int i = 0; i < image.getHeight(); i++) {
+	//	for (unsigned int j = 0; j < image.getWidth(); j++) {
 
-			auto x = convulutioned[i][j];
-			uint8_t num = 0;
-			for (unsigned int i = 0; i < 8; i++) {
-				((x >> i) & 0b1) ? num += pow(2, i) : num += 0;
-			}
-			std::cout << ((int)num < 220)?1:0 ;
-		}
-		std::cout << '\n';
-	}
+	//		auto x = m[i][j];
+	//		uint8_t num = 0;
+	//		for (unsigned int i = 0; i < 8; i++) {
+	//			((x >> i) & 0b1) ? num += pow(2, i) : num += 0;
+	//		}
+	//		std::cout << ((int)num < 220) ? 1 : 0;
+	//	}
+	//	std::cout << std::endl;
+	//}
+
+	//for (unsigned int i = 0; i < image.getHeight(); i++) {
+	//	for (unsigned int j = 0; j < image.getWidth(); j++) {
+
+	//		auto x = convulutioned[i][j];
+	//		uint8_t num = 0;
+	//		for (unsigned int i = 0; i < 8; i++) {
+	//			((x >> i) & 0b1) ? num += pow(2, i) : num += 0;
+	//		}
+	//		std::cout << ((int)num < 220)?1:0 ;
+	//	}
+	//	std::cout << '\n';
+	//}
 	return convulutioned.get_intensity_image_ptr();
 }
 
@@ -72,5 +86,6 @@ IntensityImage * StudentPreProcessing::stepThresholding(const IntensityImage &im
 
 	IntensityImage * ThoroughBushThoroughBrier = ImageFactory::newIntensityImage();
 	HereBeDragons::NoWantOfConscienceHoldItThatICall(temp_image, *ThoroughBushThoroughBrier);
+
 	return ThoroughBushThoroughBrier;
 }
