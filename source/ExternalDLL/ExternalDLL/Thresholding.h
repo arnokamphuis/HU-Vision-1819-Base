@@ -47,6 +47,34 @@ namespace tr {
 			basic_threshold(src, avg_tresh, maxVal);
 			auto_treshold(src, avg_tresh, maxVal);
 		}
+		else {
+			basic_threshold(src, avg_tresh, maxVal);
+		}
+	}
+
+	template<class T>
+	void histogram_threshold(ed::matrix<T> &src, int maxVal) {
+		std::array<int, 256> histogram = {};
+
+		for (int i = 0; i < src.height; i++)
+		{
+			for (int j = 0; j < src.width; j++) {
+				histogram[src(i, j)] += 1;
+			}
+		}
+
+		int t = 0;
+		for (const auto & h : histogram) {
+			t++;
+		}
+
+		auto mid = histogram.begin();
+		std::advance(mid, 127);
+		auto w_peak = std::max_element(histogram.begin(), mid);
+		auto b_peak = std::max_element(mid, histogram.begin());
+
+		int threshold = (std::distance(histogram.begin(), w_peak) + std::distance(histogram.begin(), b_peak)) / 2;
+		basic_threshold(src, threshold, maxVal);
 	}
 
 

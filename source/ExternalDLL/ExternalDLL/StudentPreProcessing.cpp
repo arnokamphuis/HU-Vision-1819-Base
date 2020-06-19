@@ -86,19 +86,19 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 			}
 		}
 	}
-
-
 	return m.get_intensity_image_ptr();
 }
 
 IntensityImage * StudentPreProcessing::stepThresholding(const IntensityImage &image) const { // aanpassen
 	//Image Container
-	ed::matrix<unsigned char> m(image);
+	//ed::matrix<unsigned char> m(image);
+	ed::matrix<int> m(image);
 
 	//5x5 Gaussian Filter (Remove Noise)
 
 	//Basic Threshold filter
-	tr::auto_treshold(m, 120, 255);
+	//tr::auto_treshold(m, 120, 255);
+	tr::histogram_threshold(m, 255);
 
 	//return image pointer
 	return m.get_intensity_image_ptr();
