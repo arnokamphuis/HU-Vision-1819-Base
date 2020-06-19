@@ -12,23 +12,23 @@ namespace ed {
 		int width = -1;
 		int height = -1;
 
-		T* m;
+		T* matrix;
 
 		matrix(const int h, const int w) :
 			width(w),
 			height(h)
 		{
-			m = new T[height*width];
+			matrix = new T[height*width];
 		}
 
 		matrix(const IntensityImage& image) :
 			width(image.getWidth()),
 			height(image.getHeight())
 		{
-			m = new T[height*width];
+			matrix = new T[height*width];
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
-					m[(y*width) + x] = image.getPixel(x, y);
+					matrix[(y*width) + x] = image.getPixel(x, y);
 				}
 			}
 		}
@@ -38,10 +38,10 @@ namespace ed {
 			width(W),
 			height(H)
 		{
-			m = new T[height*width];
+			matrix = new T[height*width];
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
-					m[(y*width) + x] = matrix[y][x];
+					matrix[(y*width) + x] = matrix[y][x];
 				}
 			}
 		}
@@ -58,18 +58,18 @@ namespace ed {
 		}
 
 		T & operator()(const int y, const int x) {
-			return m[(y*width) + x];
+			return matrix[(y*width) + x];
 		}
 
 		T & operator()(int n) {
-			return m[n];
+			return matrix[n];
 		}
 	};
 
 
 	template <typename T, T H, T W, typename TT = T>
 	matrix<T> convolution(matrix<T> & image, matrix<TT, H, W> & kernel) {
-		// find center position of kernel (half of kernel size)
+		//Find the center of the Kernel
 		unsigned int kernel_width = kernel.width;
 		unsigned int kernel_height = kernel.height;
 
@@ -83,11 +83,11 @@ namespace ed {
 				for (int yy = kernel_height - 1; yy >= 0; --yy) {
 					for (int xx = kernel_width - 1; xx >= 0; --xx) {
 
-						// index of input signal, used for checking boundary
+						// index of input signal, for the bounds.
 						int image_index_Y = y + (kernel_center_Y - yy);
 						int image_index_X = x + (kernel_center_X - xx);
 
-						// ignore input samples which are out of bound
+						// ignore out of bounds
 						if (image_index_Y >= 0 && image_index_Y <= image.height && image_index_X >= 0 && image_index_X <= image.width) {
 							new_image(y, x) += image(image_index_Y, image_index_X) * kernel(yy, xx);
 						}
