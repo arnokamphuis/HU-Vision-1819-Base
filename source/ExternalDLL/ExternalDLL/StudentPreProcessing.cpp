@@ -1,6 +1,12 @@
 #include "StudentPreProcessing.h"
 #include "EdgeDetection.h"
 #include <iostream>
+#include "Thresholding.h"
+
+#include "ImageIO.h"
+#include "GrayscaleAlgorithm.h"
+#include "ImageFactory.h"
+#include "HereBeDragons.h"
 
 IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &image) const {
 	return nullptr;
@@ -67,12 +73,12 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 } });
 
 	ed::matrix<int> m(image);
-
 	m = ed::convolution<int, 9, 9>(m, edge_kernel);
+	m.equalization(255);
 
 	for (int i = 0; i < m.height; i++) {
 		for (int ii = 0; ii < m.width; ii++) {
-			if (m(i, ii) <= 152 || m(i, ii) > 2500) {
+			if (m(i, ii) <= 155 || m(i, ii) > 2500) {
 				m(i, ii) = 0;
 			}
 			else {
@@ -86,5 +92,14 @@ IntensityImage * StudentPreProcessing::stepEdgeDetection(const IntensityImage &i
 }
 
 IntensityImage * StudentPreProcessing::stepThresholding(const IntensityImage &image) const { // aanpassen
-	return nullptr;
+	//Image Container
+	ed::matrix<unsigned char> m(image);
+
+	//5x5 Gaussian Filter (Remove Noise)
+
+	//Basic Threshold filter
+	tr::auto_treshold(m, 120, 255);
+
+	//return image pointer
+	return m.get_intensity_image_ptr();
 }
