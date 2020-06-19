@@ -68,13 +68,11 @@ bool executeSteps(DLLExecution * executor) {
 	}
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep3, ImageIO::getDebugFileName("Pre-processing-3.png"));
 
-	if (!executor->executePreProcessingStep4(false)) {
+	if (!executor->executePreProcessingStep4(true)) {
 		std::cout << "Pre-processing step 4 failed!" << std::endl;
 		return false;
 	}
 	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep4, ImageIO::getDebugFileName("Pre-processing-4.png"));
-
-
 
 	//Execute the localization steps
 	if (!executor->prepareLocalization()) {
@@ -92,12 +90,12 @@ bool executeSteps(DLLExecution * executor) {
 		return false;
 	}
 
-	if (!executor->executeLocalizationStep3(true)) {
+	if (!executor->executeLocalizationStep3(false)) {
 		std::cout << "Localization step 3 failed!" << std::endl;
 		return false;
 	}
 
-	if (!executor->executeLocalizationStep4(true)) {
+	if (!executor->executeLocalizationStep4(false)) {
 		std::cout << "Localization step 4 failed!" << std::endl;
 		return false;
 	}
