@@ -20,7 +20,7 @@ int main(int argc, char * argv[]) {
 
 
 	ImageIO::debugFolder = "C:\\Users\\Twan\\Documents\\git\\HU-Vision\\source\\ExternalDLL\\Debug";
-	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will skip any image save function calls
+	ImageIO::isInDebugMode = true; //If set to false the ImageIO class will sip any image save function calls
 
 
 	RGBImage * input = ImageFactory::newRGBImage();
